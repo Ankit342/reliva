@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Reliva – Luxury handcrafted candles for gifting, self-care and elegant spaces.">
 <meta name="keywords" content="Reliva candles, luxury candles, scented candles, gift hampers">
 <meta name="author" content="Reliva">
@@ -31,30 +32,43 @@ body{font-family:Poppins;background:#0e0e0e;color:white}
   <h1 class="luxury-font text-4xl">Reliva</h1>
 </div>
 
-<nav class="fixed w-full top-0 z-40 backdrop-blur-lg bg-black/30 border-b border-white/20">
-  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-    <h1 class="luxury-font text-2xl">Reliva</h1>
+<nav class="fixed w-full top-0 z-50 bg-black/40 backdrop-blur-lg border-b border-white/20">
 
-    <div class="hidden md:flex gap-8">
-      <a href="index.html">Home</a>
-      <a href="products.html">Candles</a>
-      <a href="hampers.html">Hampers</a>
-      <a href="offers.html">Offers</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
 
-    <button id="menuBtn" class="md:hidden text-2xl">☰</button>
-  </div>
+<a href="index.html" class="luxury-font text-2xl">Reliva</a>
 
-  <div id="mobileMenu" class="hidden md:hidden flex flex-col text-center gap-4 pb-6">
-    <a href="index.html">Home</a>
-    <a href="products.html">Candles</a>
-    <a href="hampers.html">Hampers</a>
-    <a href="offers.html">Offers</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
+<!-- Desktop Menu -->
+<div class="hidden md:flex gap-8">
+<a href="index.html">Home</a>
+<a href="products.html">Candles</a>
+<a href="hampers.html">Hampers</a>
+<a href="offers.html">Offers</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<!-- Hamburger -->
+<button id="menuBtn" class="md:hidden text-3xl">☰</button>
+
+</div>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu"
+class="fixed top-0 left-0 w-full h-screen bg-black z-[60]
+flex-col items-center justify-center space-y-8 text-xl hidden">
+
+<button id="closeMenu" class="absolute top-6 right-6 text-3xl">✕</button>
+
+<a href="index.html">Home</a>
+<a href="products.html">Candles</a>
+<a href="hampers.html">Hampers</a>
+<a href="offers.html">Offers</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
 </nav>
 
 

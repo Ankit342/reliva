@@ -1,16 +1,25 @@
 $(document).ready(function () {
 
-  /// MOBILE MENU TOGGLE
-  $("#menuBtn").click(function () {
-    $("#mobileMenu").slideToggle();
-  });
+  /// OPEN MENU
+$("#menuBtn").click(function () {
+  $("#mobileMenu").removeClass("hidden").addClass("flex");
+  $("body").addClass("overflow-hidden");
+});
 
-  /// AUTO RESET MENU ON RESIZE
-  $(window).resize(function () {
-    if ($(window).width() >= 768) {
-      $("#mobileMenu").hide();
-    }
-  });
+/// CLOSE MENU
+$("#closeMenu, #mobileMenu a").click(function () {
+  $("#mobileMenu").removeClass("flex").addClass("hidden");
+  $("body").removeClass("overflow-hidden");
+});
+
+/// AUTO RESET ON DESKTOP
+$(window).resize(function () {
+  if ($(window).width() >= 768) {
+    $("#mobileMenu").removeClass("flex").addClass("hidden");
+    $("body").removeClass("overflow-hidden");
+  }
+});
+
 
   /// SCROLL REVEAL
   function reveal() {
