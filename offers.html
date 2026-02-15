@@ -18,28 +18,115 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-body{font-family:Poppins;background:#0e0e0e;color:white}
+body{font-family:Poppins;background:#ffffff;color:#111111}
 .luxury-font{font-family:'Playfair Display',serif}
 .reveal{opacity:0;transform:translateY(60px);transition:1s}
 .reveal.active{opacity:1;transform:translateY(0)}
+/* BACKGROUND FADE */
+.loader-bg{
+background:#f8f6f2;
+animation:bgFade 1.8s ease forwards;
+}
+
+@keyframes bgFade{
+0%{background:#f1ede7}
+100%{background:#ffffff}
+}
+
+/* LOGO DRAW EFFECT */
+.logo-draw{
+opacity:0;
+transform:scale(0.8);
+animation:logoDraw 1.6s ease forwards;
+}
+
+@keyframes logoDraw{
+0%{
+opacity:0;
+transform:scale(0.8);
+filter:blur(6px);
+}
+60%{
+opacity:1;
+transform:scale(1.05);
+filter:blur(0);
+}
+100%{
+transform:scale(1);
+}
+}
+
+/* SLOGAN FADE */
+.slogan{
+opacity:0;
+animation:sloganFade 1.5s ease forwards;
+animation-delay:1s;
+}
+
+@keyframes sloganFade{
+to{
+opacity:1;
+letter-spacing:0.25em;
+}
+}
+
+/* GOLD SHIMMER LINE */
+.gold-shimmer{
+height:100%;
+width:40%;
+background:linear-gradient(
+90deg,
+transparent,
+#d4af37,
+#f6e27a,
+#d4af37,
+transparent
+);
+animation:shimmerMove 2s linear infinite;
+}
+
+@keyframes shimmerMove{
+0%{transform:translateX(-100%)}
+100%{transform:translateX(300%)}
+}
 </style>
+
 </head>
 
 <body>
 
 <!-- NAVBAR -->
-<div id="loader" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
-  <h1 class="luxury-font text-4xl">Reliva</h1>
+<div id="loader" class="fixed inset-0 z-50 flex items-center justify-center loader-bg">
+
+  <div class="flex flex-col items-center gap-8 text-center">
+
+    <!-- LOGO DRAW -->
+    <div class="logo-draw-wrapper">
+      <img src="images/icon.jpg" class="w-24 logo-draw" alt="Reliva Logo">
+    </div>
+
+    <!-- SLOGAN -->
+    <p class="luxury-font text-lg tracking-[0.3em] text-[#bfa46f] slogan">
+      Light • Emotion • Luxury
+    </p>
+
+    <!-- GOLD SHIMMER LINE -->
+    <div class="w-48 h-[2px] bg-[#e8e3d9] overflow-hidden rounded-full">
+      <div class="gold-shimmer"></div>
+    </div>
+
+  </div>
+
 </div>
 
-<nav class="fixed w-full top-0 z-50 bg-black/40 backdrop-blur-lg border-b border-white/20">
+<nav class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-[#e5e5e5]">
 
 <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
 
 <a href="index.html" class="luxury-font text-2xl">Reliva</a>
 
 <!-- Desktop Menu -->
-<div class="hidden md:flex gap-8">
+<div class="hidden md:flex gap-8 text-[#111]">
 <a href="index.html">Home</a>
 <a href="products.html">Candles</a>
 <a href="hampers.html">Hampers</a>
@@ -55,7 +142,7 @@ body{font-family:Poppins;background:#0e0e0e;color:white}
 
 <!-- Mobile Menu -->
 <div id="mobileMenu"
-class="fixed top-0 left-0 w-full h-screen bg-black z-[60]
+class="fixed top-0 left-0 w-full h-screen bg-white text-[#111] z-[60]
 flex-col items-center justify-center space-y-8 text-xl hidden">
 
 <button id="closeMenu" class="absolute top-6 right-6 text-3xl">✕</button>
@@ -80,7 +167,7 @@ Special Offers
 
 <div class="grid md:grid-cols-3 gap-10">
 
-<div class="bg-white/5 rounded-3xl overflow-hidden reveal">
+<div class="bg-[#f8f6f2] rounded-3xl overflow-hidden reveal">
 <img src="https://i.pinimg.com/1200x/f4/ef/eb/f4efeb7e5ab789f50d7c491e403ee345.jpg">
 <div class="p-6">
 <h2 class="text-2xl mb-2">Self Care Combo</h2>
@@ -88,7 +175,7 @@ Special Offers
 </div>
 </div>
 
-<div class="bg-white/5 rounded-3xl overflow-hidden reveal">
+<div class="bg-[#f8f6f2] rounded-3xl overflow-hidden reveal">
 <img src="https://i.pinimg.com/736x/75/5f/f1/755ff1401efad4f34548006decc05c86.jpg">
 <div class="p-6">
 <h2 class="text-2xl mb-2">Anniversary Special</h2>
@@ -96,7 +183,7 @@ Special Offers
 </div>
 </div>
 
-<div class="bg-white/5 rounded-3xl overflow-hidden reveal">
+<div class="bg-[#f8f6f2] rounded-3xl overflow-hidden reveal">
 <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=600">
 <div class="p-6">
 <h2 class="text-2xl mb-2">Festive Sale</h2>
@@ -107,6 +194,10 @@ Special Offers
 </div>
 
 </section>
+<!-- FOOTER -->
+<footer class="text-center py-10 border-t border-[#e5e5e5]">
+© 2026 Reliva Candles
+</footer>
 
 </body>
 </html>

@@ -17,28 +17,203 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-body{font-family:Poppins;background:#0e0e0e;color:white}
+body{font-family:Poppins;background:#ffffff;color:#111111}
 .luxury-font{font-family:'Playfair Display',serif}
 .reveal{opacity:0;transform:translateY(60px);transition:1s}
 .reveal.active{opacity:1;transform:translateY(0)}
+/* BACKGROUND FADE */
+.loader-bg{
+background:#f8f6f2;
+animation:bgFade 1.8s ease forwards;
+}
+
+@keyframes bgFade{
+0%{background:#f1ede7}
+100%{background:#ffffff}
+}
+
+/* LOGO DRAW EFFECT */
+.logo-draw{
+opacity:0;
+transform:scale(0.8);
+animation:logoDraw 1.6s ease forwards;
+}
+
+@keyframes logoDraw{
+0%{
+opacity:0;
+transform:scale(0.8);
+filter:blur(6px);
+}
+60%{
+opacity:1;
+transform:scale(1.05);
+filter:blur(0);
+}
+100%{
+transform:scale(1);
+}
+}
+
+/* SLOGAN FADE */
+.slogan{
+opacity:0;
+animation:sloganFade 1.5s ease forwards;
+animation-delay:1s;
+}
+
+@keyframes sloganFade{
+to{
+opacity:1;
+letter-spacing:0.25em;
+}
+}
+
+/* GOLD SHIMMER LINE */
+.gold-shimmer{
+height:100%;
+width:40%;
+background:linear-gradient(
+90deg,
+transparent,
+#d4af37,
+#f6e27a,
+#d4af37,
+transparent
+);
+animation:shimmerMove 2s linear infinite;
+}
+
+@keyframes shimmerMove{
+0%{transform:translateX(-100%)}
+100%{transform:translateX(300%)}
+}
+/* FLUID LIVE BADGE */
+.live-badge{
+position:absolute;
+top:14px;
+left:14px;
+font-size:11px;
+padding:5px 14px;
+border-radius:999px;
+letter-spacing:.18em;
+font-weight:600;
+color:#fff;
+overflow:hidden;
+background:linear-gradient(
+120deg,
+#ff004f,
+#ff4d6d,
+#ff004f,
+#ff7a00,
+#ff004f
+);
+background-size:300% 300%;
+animation:liquidMove 6s ease infinite;
+box-shadow:0 4px 14px rgba(0,0,0,0.15);
+}
+
+/* SOFT GLOSS LAYER */
+.live-badge::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.5),
+transparent
+);
+transform:translateX(-100%);
+animation:shine 3s infinite;
+}
+
+/* GRADIENT FLOW */
+@keyframes liquidMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+/* GLOSS SWEEP */
+@keyframes shine{
+100%{transform:translateX(200%)}
+}
+.live-badge{
+animation:
+liquidMove 6s ease infinite,
+livePulse 2.4s ease-in-out infinite;
+}
+
+@keyframes livePulse{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.06)}
+}
+
+/* WHATSAPP ONLINE PULSE */
+.pulse-dot{
+position:absolute;
+top:18px;
+right:18px;
+width:10px;
+height:10px;
+background:#25D366;
+border-radius:50%;
+}
+
+.pulse-dot::after{
+content:"";
+position:absolute;
+inset:0;
+border-radius:50%;
+background:#25D366;
+animation:pulse 1.6s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);opacity:.7}
+70%{transform:scale(2.4);opacity:0}
+100%{opacity:0}
+}
+
 </style>
+
 </head>
 
 <body>
 
 <!-- NAVBAR -->
-<div id="loader" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
-  <h1 class="luxury-font text-4xl">Reliva</h1>
+<div id="loader" class="fixed inset-0 z-50 flex items-center justify-center loader-bg">
+
+  <div class="flex flex-col items-center gap-8 text-center">
+
+    <!-- LOGO DRAW -->
+    <div class="logo-draw-wrapper">
+      <img src="images/icon.jpg" class="w-24 logo-draw" alt="Reliva Logo">
+    </div>
+
+    <!-- SLOGAN -->
+    <p class="luxury-font text-lg tracking-[0.3em] text-[#bfa46f] slogan">
+      Light • Emotion • Luxury
+    </p>
+
+    <!-- GOLD SHIMMER LINE -->
+    <div class="w-48 h-[2px] bg-[#e8e3d9] overflow-hidden rounded-full">
+      <div class="gold-shimmer"></div>
+    </div>
+
+  </div>
+
 </div>
 
-<nav class="fixed w-full top-0 z-50 bg-black/40 backdrop-blur-lg border-b border-white/20">
+<nav class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-[#e5e5e5]">
 
 <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
 
 <a href="index.html" class="luxury-font text-2xl">Reliva</a>
 
 <!-- Desktop Menu -->
-<div class="hidden md:flex gap-8">
+<div class="hidden md:flex gap-8 text-[#111]">
 <a href="index.html">Home</a>
 <a href="products.html">Candles</a>
 <a href="hampers.html">Hampers</a>
@@ -54,7 +229,7 @@ body{font-family:Poppins;background:#0e0e0e;color:white}
 
 <!-- Mobile Menu -->
 <div id="mobileMenu"
-class="fixed top-0 left-0 w-full h-screen bg-black z-[60]
+class="fixed top-0 left-0 w-full h-screen bg-white text-[#111] z-[60]
 flex-col items-center justify-center space-y-8 text-xl hidden">
 
 <button id="closeMenu" class="absolute top-6 right-6 text-3xl">✕</button>
@@ -70,31 +245,116 @@ flex-col items-center justify-center space-y-8 text-xl hidden">
 
 </nav>
 
-
+<!-- HERO -->
 <section class="pt-32 pb-20 text-center">
-<h1 class="luxury-font text-5xl mb-12 reveal">Get in Touch</h1>
+<h1 class="luxury-font text-5xl mb-4 reveal">Get in Touch</h1>
+<p class="text-gray-500 reveal">
+We’d love to hear from you — for orders, custom candles or gifting.
+</p>
+</section>
 
-<div class="max-w-xl mx-auto space-y-6 reveal">
+<!-- CONTACT CARDS -->
+<section class="max-w-6xl mx-auto px-6 pb-24">
 
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=relivacandle@gmail.com&su=Order%20Inquiry&body=Hello%20Reliva,%20I%20want%20to%20order%20a%20candle."
-target="_blank"
-class="block hover:underline">
-📧 relivacandle@gmail.com
+<div class="grid md:grid-cols-3 gap-10 items-stretch">
+
+<!-- EMAIL -->
+<a href="mailto:relivacandle@gmail.com"
+class="contact-card bg-[#f8f6f2] p-10 rounded-3xl text-center reveal
+flex flex-col justify-between h-full">
+
+<div>
+<img src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+class="w-12 mx-auto mb-6">
+
+<h3 class="luxury-font text-2xl mb-2">Email Us</h3>
+<p class="text-gray-500 text-sm">Quick response within 24 hours</p>
+</div>
+
+<p class="mt-6 font-medium">relivacandle@gmail.com</p>
+
+</a>
+<!-- INSTAGRAM -->
+<a href="https://instagram.com/_reliv.a._" target="_blank"
+class="contact-card relative bg-[#f8f6f2] p-10 rounded-3xl text-center reveal
+flex flex-col justify-between h-full overflow-hidden">
+
+<!-- LIVE BADGE -->
+<div class="live-badge">LIVE</div>
+
+<div>
+<img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+class="w-12 mx-auto mb-6">
+
+<h3 class="luxury-font text-2xl mb-2">Instagram</h3>
+<p class="text-gray-500 text-sm mb-4">
+Follow our candle journey
+</p>
+<p class="text-xs text-gray-400 mt-1">@_reliv.a._</p>
+</div>
+
+<img
+src="images/icon.jpg"
+class="rounded-2xl w-full h-52 object-cover mt-6"
+alt="Reliva Instagram">
+
 </a>
 
-<a href="https://instagram.com/_reliv.a._" target="_blank" class="block hover:underline">
-📱 @_reliv.a._
-</a>
-
-<p>📍 Sodepur, Kolkata</p>
-
+<!-- WHATSAPP -->
 <a href="https://wa.me/91XXXXXXXXXX"
-class="inline-block bg-white text-black px-8 py-3 rounded-full mt-6">
-Chat on WhatsApp
+class="contact-card relative bg-black text-white p-10 rounded-3xl text-center reveal
+flex flex-col justify-between h-full">
+
+<!-- ONLINE PULSE -->
+<div class="pulse-dot"></div>
+
+<div>
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+class="w-12 mx-auto mb-6">
+
+<h3 class="luxury-font text-2xl mb-2">WhatsApp</h3>
+<p class="text-sm text-white/70">
+Instant replies for orders & custom candles
+</p>
+</div>
+
+<span class="inline-block border border-white px-6 py-2 rounded-full mt-6">
+Chat Now
+</span>
+
 </a>
 
 </div>
+
 </section>
+
+<!-- LOCATION -->
+<section class="text-center pb-24 reveal">
+<h3 class="luxury-font text-3xl mb-4">Our Studio</h3>
+<p class="text-gray-500">Sodepur, Kolkata</p>
+<p class="text-sm text-gray-400 mt-2">
+Handcrafted with love • Delivery at your doorstep
+</p>
+</section>
+
+<!-- CUSTOM ORDER STRIP -->
+<section class="bg-[#f8f6f2] py-14 text-center reveal">
+<h3 class="luxury-font text-3xl mb-3">
+Planning a special gift?
+</h3>
+<p class="text-gray-600 mb-6">
+We create personalized candles for birthdays, anniversaries & memories.
+</p>
+<a href="https://wa.me/91XXXXXXXXXX"
+class="bg-black text-white px-8 py-3 rounded-full">
+Customize Your Candle
+</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center py-10 border-t border-[#e5e5e5]">
+© 2026 Reliva Candles
+</footer>
 
 </body>
 </html>

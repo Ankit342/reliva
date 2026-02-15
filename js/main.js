@@ -1,4 +1,6 @@
 $(document).ready(function () {
+const MIN_LOADER_TIME = 4200;
+let pageLoaded = false;
 
   /// OPEN MENU
 $("#menuBtn").click(function () {
@@ -37,14 +39,25 @@ $(window).resize(function () {
   $(window).on("scroll", reveal);
   reveal();
 
-  /// LOADER
-  $(window).on("load", function () {
-  $("#loader").fadeOut(800);
+ $(window).on("load", function () {
+  pageLoaded = true;
 });
 
-setTimeout(function(){
-  $("#loader").fadeOut(800);
-}, 2000);
+setTimeout(function () {
+  if (pageLoaded) {
+    closeLoader();
+  } else {
+    $(window).on("load", closeLoader);
+  }
+}, MIN_LOADER_TIME);
+
+function closeLoader() {
+  $("#loader").addClass("loader-exit");
+
+  setTimeout(() => {
+    $("#loader").fadeOut(800);
+  }, 900);
+}
 
 
   /// REVIEW SLIDER
