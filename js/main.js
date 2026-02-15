@@ -30,8 +30,13 @@ $(document).ready(function () {
 
   /// LOADER
   $(window).on("load", function () {
-    $("#loader").fadeOut(800);
-  });
+  $("#loader").fadeOut(800);
+});
+
+setTimeout(function(){
+  $("#loader").fadeOut(800);
+}, 2000);
+
 
   /// REVIEW SLIDER
   let index = 0;
