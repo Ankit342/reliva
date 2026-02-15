@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Reliva – Luxury handcrafted candles for gifting, self-care and elegant spaces.">
+<meta name="keywords" content="Reliva candles, luxury candles, scented candles, gift hampers">
+<meta name="author" content="Reliva">
+
+<link rel="icon" type="image/png" href="images/icon.jpg">
+
+<title>Our Candles</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/main.js" defer></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body{font-family:Poppins;background:#0e0e0e;color:white}
+.luxury-font{font-family:'Playfair Display',serif}
+.reveal{opacity:0;transform:translateY(60px);transition:1s}
+.reveal.active{opacity:1;transform:translateY(0)}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div id="loader" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
+  <h1 class="luxury-font text-4xl">Reliva</h1>
+</div>
+
+<nav class="fixed w-full top-0 z-40 backdrop-blur-lg bg-black/30 border-b border-white/20">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    <h1 class="luxury-font text-2xl">Reliva</h1>
+
+    <div class="hidden md:flex gap-8">
+      <a href="index.html">Home</a>
+      <a href="products.html">Candles</a>
+      <a href="hampers.html">Hampers</a>
+      <a href="offers.html">Offers</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+  </div>
+
+  <div id="mobileMenu" class="hidden md:hidden flex flex-col text-center gap-4 pb-6">
+    <a href="index.html">Home</a>
+    <a href="products.html">Candles</a>
+    <a href="hampers.html">Hampers</a>
+    <a href="offers.html">Offers</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+
+<section class="py-32 max-w-7xl mx-auto px-6 text-center">
+<h1 class="luxury-font text-5xl mb-20 reveal">Our Candles</h1>
+
+<div class="grid md:grid-cols-3 gap-12">
+
+<!-- Jar Candles -->
+<div class="bg-white/5 p-2 rounded-3xl reveal" onclick="openModal()">
+<img class="rounded-2xl mb-4 w-full h-[320px] object-cover"
+src="https://i.pinimg.com/736x/d7/5b/f1/d75bf14c126d71c51c2767b247952014.jpg"
+alt="Jar Candle">
+<h2 class="text-2xl">Jar Candles</h2>
+<p>Minimal, elegant & timeless fragrances.</p>
+</div>
+
+<!-- Flower Candles -->
+<div class="bg-white/5 p-2 rounded-3xl reveal" onclick="openModal()">
+<img class="rounded-2xl mb-4 w-full h-[320px] object-cover"
+src="https://i.pinimg.com/736x/d7/a3/cc/d7a3cc2e06f269748f059cab175fc368.jpg"
+alt="Flower Candle">
+<h2 class="text-2xl">Flower Candles</h2>
+<p>Where flowers meet candlelight.</p>
+</div>
+
+<!-- Customized Candles -->
+<div class="bg-white/5 p-2 rounded-3xl reveal" onclick="openModal()">
+<img class="rounded-2xl mb-4 w-full h-[320px] object-cover"
+src="https://i.pinimg.com/736x/af/01/ce/af01ce5b9b00089470715287b58e57a7.jpg"
+alt="Customized Candle">
+<h2 class="text-2xl">Customized Candles</h2>
+<p>Create your own candle with name & message.</p>
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>
