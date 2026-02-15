@@ -1,48 +1,19 @@
 $(document).ready(function () {
-const MIN_LOADER_TIME = 4200;
+
+const MIN_LOADER_TIME = 3000;   // 3 seconds
 let pageLoaded = false;
 
-  /// OPEN MENU
-$("#menuBtn").click(function () {
-  $("#mobileMenu").removeClass("hidden").addClass("flex");
-  $("body").addClass("overflow-hidden");
-});
-
-/// CLOSE MENU
-$("#closeMenu, #mobileMenu a").click(function () {
-  $("#mobileMenu").removeClass("flex").addClass("hidden");
-  $("body").removeClass("overflow-hidden");
-});
-
-/// AUTO RESET ON DESKTOP
-$(window).resize(function () {
-  if ($(window).width() >= 768) {
-    $("#mobileMenu").removeClass("flex").addClass("hidden");
-    $("body").removeClass("overflow-hidden");
-  }
-});
-
-
-  /// SCROLL REVEAL
-  function reveal() {
-    $(".reveal").each(function () {
-      let top = $(this).offset().top;
-      let scroll = $(window).scrollTop();
-      let height = $(window).height();
-
-      if (scroll + height > top + 100) {
-        $(this).addClass("active");
-      }
-    });
-  }
-
-  $(window).on("scroll", reveal);
-  reveal();
-
- $(window).on("load", function () {
+/* PAGE LOAD EVENT */
+$(window).on("load", function () {
   pageLoaded = true;
 });
 
+/* CLOSE LOADER FUNCTION */
+function closeLoader() {
+  $("#loader").fadeOut(800);
+}
+
+/* WAIT FOR BOTH CONDITIONS */
 setTimeout(function () {
   if (pageLoaded) {
     closeLoader();
@@ -51,27 +22,34 @@ setTimeout(function () {
   }
 }, MIN_LOADER_TIME);
 
-function closeLoader() {
-  $("#loader").addClass("loader-exit");
 
-  setTimeout(() => {
-    $("#loader").fadeOut(800);
-  }, 900);
+
+/* MOBILE MENU */
+$("#menuBtn").click(function () {
+  $("#mobileMenu").removeClass("hidden").addClass("flex");
+  $("body").addClass("overflow-hidden");
+});
+
+$("#closeMenu, #mobileMenu a").click(function () {
+  $("#mobileMenu").removeClass("flex").addClass("hidden");
+  $("body").removeClass("overflow-hidden");
+});
+
+
+/* SCROLL REVEAL */
+function reveal() {
+  $(".reveal").each(function () {
+    let top = $(this).offset().top;
+    let scroll = $(window).scrollTop();
+    let height = $(window).height();
+
+    if (scroll + height > top + 100) {
+      $(this).addClass("active");
+    }
+  });
 }
 
-
-  /// REVIEW SLIDER
-  let index = 0;
-  setInterval(() => {
-    index = (index + 1) % 3;
-    $("#reviewSlider").css("transform", `translateX(-${index * 100}%)`);
-  }, 3500);
+$(window).on("scroll", reveal);
+reveal();
 
 });
-function openModal(){
-$("#productModal").removeClass("hidden").addClass("flex");
-}
-
-function closeModal(){
-$("#productModal").addClass("hidden").removeClass("flex");
-}
